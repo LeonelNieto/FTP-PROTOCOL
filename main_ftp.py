@@ -1,7 +1,6 @@
 from ftplib import FTP
 from tkinter import filedialog
 import sys
-import time
 
 IPADDRESS  = sys.argv[ 1 ]
 USERNAME   = sys.argv[ 2 ]
@@ -24,7 +23,6 @@ class TransferFilesFTP( ):
         
         except:
             print( "No se ha podido establecer la conexión, revisa los datos ingresados" )
-            time.sleep( 2 )
             sys.exit( 1 )
     
     def uploadFiles( self ):
