@@ -52,7 +52,7 @@ def parseArgs( sysargs ):
         '-o',
         '--operation',
         metavar='OPERATION',
-        help='Operation to select, Download, Upload or Lis files',
+        help='Operation to select, Download, Upload or List files',
         required=True
     )
     parser.add_argument(
