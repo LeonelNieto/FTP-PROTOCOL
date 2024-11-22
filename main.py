@@ -106,9 +106,13 @@ class TransferFilesFTP( ):
             print( f"Fail to upload the file: {e}" )
             sys.exit( 1 )
     
-    def downloadFiles( self, file_name:str ) -> None:
+    def downloadFiles( self, file_name:str, pathDir:str ) -> None:
         try:
-            local_path =  file_name
+            if pathDir == None:
+                local_path = filedialog.askdirectory( )
+            else:
+                local_path = pathDir
+            local_path += "/" + file_name
             with open( local_path, 'wb' ) as file:
                 self.ftp.retrbinary( f'RETR {file_name}', file.write )
                 print( f"File '{file_name}' downloaded successful to '{ local_path }'" )
@@ -146,5 +150,5 @@ if __name__ == "__main__":
     elif OPERATION == "Upload":  
         transferfilesFTP.uploadFiles( PATH )
     elif OPERATION == "Download":
-        transferfilesFTP.downloadFiles( FILENAME )
+        transferfilesFTP.downloadFiles( FILENAME, PATH )
     transferfilesFTP.disconnect( )
